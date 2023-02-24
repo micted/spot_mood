@@ -1,0 +1,5 @@
+spotipy
+numpy
+boto3
+Flask
+flask-oauthlib
