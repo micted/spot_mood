@@ -14,9 +14,7 @@ pipeline {
 
         
         stage('Terraform apply') {
-            when {
-                branch 'master'
-            }
+            
             steps {
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
@@ -24,17 +22,15 @@ pipeline {
                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
-                    dir('/terraform/') {
+                    
                     sh 'terraform apply -auto-approve'
-                    }
+                    
                 }
             }
         }
 
         stage('Deploy to Lambda') {
-            when {
-                branch 'master'
-            }
+            
             steps {
                 sh 'cd lambda && zip -r function.zip ./*'
                 withCredentials([[
