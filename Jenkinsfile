@@ -8,7 +8,9 @@ pipeline {
     stages {
         stage('Terraform init') {
             steps {
+                dir('terraform'){
                 sh 'terraform init -backend-config="bucket=my-bucket-for-layer-spoot-mood" -backend-config="key=terrastate/terraform.tfstate"'
+                }
             }
         }
 
