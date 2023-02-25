@@ -36,15 +36,9 @@ variable "TF_VAR_FLASK_SECRET_KEY" {
     default = "development"
 }
 
-variable "TF_VAR_ACCESS_KEY" {
-  type = string
-     
-}
+variable "aws_access_key" {}
 
-variable "TF_VAR_SECRET_KEY" {
-  type = string
-  
-}
+variable "aws_secret_key" {}
 
 variable "region" {
   default = "us-east-1"
