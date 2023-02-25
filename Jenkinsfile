@@ -9,7 +9,16 @@ pipeline {
         stage('Terraform init') {
             steps {
                 dir('terraform'){
-                sh 'terraform init -backend-config="bucket=my-bucket-for-layer-spoot-mood" -backend-config="key=terrastate/terraform.tfstate"'
+                    withCredentials([
+                        [
+                            $class: 'AmazonWebServicesCredentialsBinding',
+                            credentialsId: 'my-aws-creds',
+                            accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                            secretKeyVariable: 'AWS_SECRET_ACCESS_KEY',
+                        ]
+                    ]) {
+                        sh 'terraform init -backend-config="bucket=my-bucket-for-layer-spoot-mood" -backend-config="key=terrastate/terraform.tfstate"'
+                    }
                 }
             }
         }
