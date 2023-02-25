@@ -23,6 +23,14 @@ variable "TF_VAR_OPENAI_KEY" {
     default = "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"
 }
 
+variable "TF_VAR_MUSIXMATCH_API_KEY" {
+
+    type = string
+    default = "e19acacfc7e6e698dec58594a7f59262"
+  
+}
+
+
 variable "TF_VAR_FLASK_SECRET_KEY" {
     type  = string
     default = "development"
