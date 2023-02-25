@@ -18,7 +18,7 @@ pipeline {
         
         stage('Terraform apply') {
             when {
-                branch 'main'
+                branch 'master'
             }
             steps {
                 sh 'terraform apply -auto-approve'
@@ -27,7 +27,7 @@ pipeline {
         
         stage('Deploy to Lambda') {
             when {
-                branch 'main'
+                branch 'master'
             }
             steps {
                 withEnv(['AWS_DEFAULT_REGION=us-east-1']) {
