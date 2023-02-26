@@ -52,7 +52,7 @@ pipeline {
                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
-                    sh 'aws lambda update-function-code --function-name my-lambda-function --zip-file fileb://lambda/function.zip'
+                    sh 'aws lambda update-function-code --function-name mood_analysis --zip-file fileb://lambda/function.zip'
                 }
             }
         }
