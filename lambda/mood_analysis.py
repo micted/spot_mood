@@ -27,7 +27,7 @@ def lambda_handler(event, context):
     TableName=table_name,
     #Limit=1
     )
-    print("hii")
+    print("this is test modificaiton so that to check my pipeline deploy smoothly")
 
     items = response.get("Items")
 
