@@ -27,7 +27,7 @@ def lambda_handler(event, context):
     TableName=table_name,
     #Limit=1
     )
-    print("hi")
+    print("hii")
 
     items = response.get("Items")
 
