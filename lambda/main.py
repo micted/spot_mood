@@ -1,5 +1,5 @@
 import os
-import atrr
+import attr
 import boto3
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
