@@ -29,8 +29,9 @@ items = response.get("Items")
 # If the table is empty or the access token is not found, return an error response
 if not items:
     print("DynamoDB table is empty")
-    error = {"statusCode": 500, "body": {"error": "access_token item not found in DynamoDB table"}}
-    print(error)git
+   
+
+
 print(items)
 #access_token_value = last_item['S']
 latest_timestamp = 0
