@@ -25,10 +25,7 @@ def filtered_for_suggestion(url):
     df_sorted = df_filtered.sort_values(by=['Count', 'Genre'], ascending=[False, True])
 
     # Return the sorted dataframe
-   
 
-    
-    
     
     #filtered_list = [track["Genre"],track["Mood"],track["Artist"]]
     

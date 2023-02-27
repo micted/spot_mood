@@ -8,7 +8,7 @@ resource "aws_lambda_function" "mood_analysis" {
   filename      = "../function.zip"
   function_name = "mood_analysis"
   role          = "arn:aws:iam::858879043794:role/lambda"
-  handler       = "mood_analysis.lambda_handler"
+  handler       = "main.lambda_handler"
   runtime       = "python3.9"
 
   layers = [aws_lambda_layer_version.mypackage_layer_moodanalysis.arn]
@@ -20,6 +20,7 @@ resource "aws_lambda_function" "mood_analysis" {
       SPOTIPY_CLIENT_SECRET = var.TF_VAR_SPOTIPY_CLIENT_SECRET
       SPOTIFY_REDIRECT_URI  = var.TF_VAR_SPOTIFY_REDIRECT_URI
       FLASK_SECRET_KEY      = var.TF_VAR_FLASK_SECRET_KEY
+      OPENAI_API_KEY        = var.TF_VAR_OPENAI_KEY
     }
   }
 }

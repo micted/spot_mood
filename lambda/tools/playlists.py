@@ -4,19 +4,49 @@ import spotipy.util as util
 import requests
 import openai
 
-username = "31lsfo3boeszgingsyq4jvcr3pyy"
-client_id = "3cda7feffdfb4d0c95e0fa480314fde2"
-client_secret = "4d072df39ed84029be1ce0415caa3532"
-redirect_uri = "https://micted.netlify.app/"
-scope = "user-library-read user-read-private user-read-email user-read-playback-state user-modify-playback-state user-read-recently-played"
-api_key = "e19acacfc7e6e698dec58594a7f59262"
+# Get environment variables
+client_id = os.environ.get("SPOTIPY_CLIENT_ID")
+client_secret = os.environ.get("SPOTIPY_CLIENT_SECRET")
+redirect_uri = os.environ.get("SPOTIFY_REDIRECT_URI")
+table_name = os.environ.get("DYNAMODB_TABLE_NAME")
+gsi_name = "access_token-timestamp-index"
+openai.api_key = os.environ.get("OPENAI_API_KEY")
 
-openai.api_key = "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"
-# Request an access token
-token = util.prompt_for_user_token(username, scope, client_id, client_secret, redirect_uri)
+# Create a DynamoDB client
+dynamodb = boto3.client("dynamodb")
 
-# Create a Spotify client
-sp = spotipy.Spotify(auth=token)
+
+
+# Use the scan method to retrieve the last item in the table sorted by timestamp in descending order
+response = dynamodb.scan(
+TableName=table_name,
+#Limit=1
+)
+print("this is test modificaiton so that to check my pipeline deploy smoothly   ")
+
+items = response.get("Items")
+
+# If the table is empty or the access token is not found, return an error response
+if not items:
+    print("DynamoDB table is empty")
+    return {"statusCode": 500, "body": {"error": "access_token item not found in DynamoDB table"}}
+
+print(items)
+#access_token_value = last_item['S']
+latest_timestamp = 0
+
+for i in range(len(items)):
+    if int(items[i]["timestamp"]["N"]) > latest_timestamp:
+        latest_timestamp = int(items[i]["timestamp"]["N"])
+        latest_token = items[i]["access_token"]["S"]
+access_token_value = latest_token
+
+print(access_token_value)
+
+sp = spotipy.Spotify(auth=access_token_value)
+
+
+
 
 
 def get_artists_from_playlist(playlist_uri):
