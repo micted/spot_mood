@@ -24,21 +24,16 @@ gsi_name = "access_token-timestamp-index"
 dynamodb = boto3.client("dynamodb")
 
 
-
 # Use the scan method to retrieve the last item in the table sorted by timestamp in descending order
-response = dynamodb.scan(
-TableName=table_name,
-#Limit=1
-)
-print("this is test modificaiton so that to check my pipeline deploy smoothly   ")
-
+response = dynamodb.scan(TableName=table_name)
+print("this is test modificaiton so that to check my pipeline deploy smoothly")
 items = response.get("Items")
 
 # If the table is empty or the access token is not found, return an error response
 if not items:
     print("DynamoDB table is empty")
     error = {"statusCode": 500, "body": {"error": "access_token item not found in DynamoDB table"}}
-    return error
+    print(error)
 
 print(items)
 #access_token_value = last_item['S']
