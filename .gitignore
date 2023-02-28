@@ -1,4 +1,5 @@
 .terraform/
 lambda_payloads/
 payload.zip
+pack
 
