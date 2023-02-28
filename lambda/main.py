@@ -26,7 +26,7 @@ dynamodb = boto3.client("dynamodb")
 
 # Use the scan method to retrieve the last item in the table sorted by timestamp in descending order
 response = dynamodb.scan(TableName=table_name)
-print("hi")
+print("hii")
 items = response.get("Items")
 
 # If the table is empty or the access token is not found, return an error response
