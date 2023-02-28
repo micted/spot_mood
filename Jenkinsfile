@@ -45,7 +45,7 @@ pipeline {
         stage('Deploy to Lambda') {
             
             steps {
-                sh 'cd lambda && zip -r function.zip ./*'
+                sh 'cd lambda && zip -r function.zip ./* python'
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
                     credentialsId: 'my-aws-creds',
