@@ -21,6 +21,7 @@ resource "aws_lambda_function" "mood_analysis" {
       SPOTIFY_REDIRECT_URI  = var.TF_VAR_SPOTIFY_REDIRECT_URI
       FLASK_SECRET_KEY      = var.TF_VAR_FLASK_SECRET_KEY
       OPENAI_API_KEY        = var.TF_VAR_OPENAI_KEY
+      PYTHONPATH = "/opt/python:/opt/python/lib/python3.9/site-packages"
     }
   }
 }
