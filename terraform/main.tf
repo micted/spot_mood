@@ -1,5 +1,5 @@
 resource "aws_lambda_layer_version" "mypackage_layer_moodanalysis" {
-    filename   = "../mypackage.zip"
+    filename   = "../packages.zip"
     layer_name = "mypackage_layer_moodanalysis"
     compatible_runtimes =["python3.9"]
 }
