@@ -1,6 +1,6 @@
 variable "TF_VAR_SPOTIFY_USERNAME" {
   type = string
-  default = "31lsfo3boeszgingsyq4jvcr3pyy"
+  default = ""
 }
 
 variable "TF_VAR_SPOTIFY_REDIRECT_URI" {
@@ -10,23 +10,23 @@ variable "TF_VAR_SPOTIFY_REDIRECT_URI" {
 
 variable "TF_VAR_SPOTIPY_CLIENT_ID" {
     type = string
-    default = "3cda7feffdfb4d0c95e0fa480314fde2"
+    default = ""
 }
 
 variable "TF_VAR_SPOTIPY_CLIENT_SECRET" {
     type = string
-    default = "4d072df39ed84029be1ce0415caa3532"
+    default = ""
 }
 
 variable "TF_VAR_OPENAI_KEY" { 
     type = string
-    default = "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"
+    default = ""
 }
 
 variable "TF_VAR_MUSIXMATCH_API_KEY" {
 
     type = string
-    default = "e19acacfc7e6e698dec58594a7f59262"
+    default = ""
   
 }
 
@@ -45,7 +45,7 @@ variable "region" {
 }
 
 variable "account_id" {
-  default = "858879043794"
+  default = ""
 }
 
 
