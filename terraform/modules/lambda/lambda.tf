@@ -31,9 +31,9 @@ resource "aws_lambda_function" "login" {
             "DYNAMODB_TABLE_NAME"   = "token_store"
             "FLASK_SECRET_KEY"      = "development"
             "SPOTIFY_REDIRECT_URI"  = "https://q2f76phkj4.execute-api.us-east-1.amazonaws.com/prod/redirect"
-            "SPOTIFY_USERNAME"      = "31lsfo3boeszgingsyq4jvcr3pyy"
-            "SPOTIPY_CLIENT_ID"     = "3cda7feffdfb4d0c95e0fa480314fde2"
-            "SPOTIPY_CLIENT_SECRET" = "4d072df39ed84029be1ce0415caa3532"
+            "SPOTIFY_USERNAME"      = ""
+            "SPOTIPY_CLIENT_ID"     = ""
+            "SPOTIPY_CLIENT_SECRET" = ""
         }
     }
 
